@@ -1,10 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit';
 
+import {selectFilter } from "../filter/filterSelectors"
+
 export const selectContacts = state => state.contacts.contacts;
 
 export const selectIsLoading = state => state.contacts.isLoading;
 
-export const selectFilter = state => state.filter;
 
 export const selectFilterContacts = createSelector(
     [selectContacts, selectFilter],
@@ -13,4 +14,3 @@ export const selectFilterContacts = createSelector(
       return filteredContacts.sort((a, b) => a.name.localeCompare(b.name));
     }
 );
-  

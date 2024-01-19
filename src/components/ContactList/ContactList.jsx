@@ -5,11 +5,11 @@ import Loader from "components/Loader/Loader";
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchContacts } from "../../redux/operations";
+import { fetchContacts } from "../../redux/contacts/contactsOperatios";
 
 import { useEffect } from "react";
 
-import { selectIsLoading, selectFilterContacts } from '../../redux/selectors';
+import { selectIsLoading, selectFilterContacts } from '../../redux/contacts/contactsSelectors';
 
 const ContactList = () => {
     const isLoading = useSelector(selectIsLoading);

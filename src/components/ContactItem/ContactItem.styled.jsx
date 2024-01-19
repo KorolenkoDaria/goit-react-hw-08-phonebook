@@ -7,15 +7,6 @@ export const Item = styled.li`
     justify-content: space-between;
     gap: 20px;
     position: relative;
-    padding-left: 35px;
-
-    &::before{
-        position: absolute;
-        content: "✅";
-        top: 4px;
-        left: 0;
-    }
-    
 `
 export const Name = styled.p`
     color: #2c3d50;

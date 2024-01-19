@@ -1,17 +1,47 @@
-import { Wrapper, H1, H2, } from "./App.styled";
+import { Route, Routes, /* Navigate  */ } from "react-router-dom";
 
-import ContactForm from 'components/ContactForm/ContactForm';
-import ContactList from "components/ContactList/ContactList";
-import Filter from "components/Filter/Filter";
+import { routes } from "routes";
+
+import { Wrapper } from "./App.styled";
+
+import Header from "components/Haeder/Header";
+import Loader from "components/Loader/Loader";
+import RestrictedRoute from "components/RestrictedRoute";
+import PrivateRoute from "components/PrivateRoute";
+
+import { refreshUser } from "../../redux/auth/authOperations";
+
+import { useDispatch } from "react-redux";
+
+import { Suspense, lazy, useEffect } from "react";
+
+const HomePage = lazy(() => import('../../pages/Home/Home'));
+const LoginPage = lazy(() => import('../../pages/Login/Login'));
+const RegisterPage = lazy(() => import('../../pages/Registration/Register'));
+const ContactsPage = lazy(() => import('../../pages/Contacts/Contacts'));
 
 const App = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser())
+  }, [dispatch])
+
   return (
+
     <Wrapper>
-      <H1>Phonebook</H1>
-      <ContactForm />
-      <H2>Contacts</H2>
-      <Filter></Filter>
-      <ContactList></ContactList>
+      <Header />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path={routes.HOME}>
+            <Route index element={<HomePage />} />
+            <Route path={routes.LOGIN} element={<RestrictedRoute><LoginPage /></RestrictedRoute>} />
+            <Route path={routes.REGISTER} element={<RestrictedRoute><RegisterPage /></RestrictedRoute>} />
+            <Route path={routes.CONTACTS} element={<PrivateRoute><ContactsPage /></PrivateRoute>} />
+          </Route>
+        </Routes>
+      </Suspense>
     </Wrapper>
   );
 

@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    width: 450px;
-    margin: 0 auto;
+    width: 650px;
     height: 350px;
-    padding: 40px 25px;
+    padding: 40px 0;
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px;
     

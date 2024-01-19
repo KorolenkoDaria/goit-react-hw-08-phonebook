@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Label, Input, Form, Field, Button } from "./ContactForm.styled";
+import { Wrapper, Label, Input, Form, Field, Button, H2 } from "./ContactForm.styled";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectContacts } from '../../redux/selectors';
 
-import { addContact } from "../../redux/operations";
+import { selectContacts } from '../../redux/contacts/contactsSelectors';
+
+import { addContact } from "../../redux/contacts/contactsOperatios";
 
 const ContactForm = () => {
 
@@ -15,7 +16,6 @@ const ContactForm = () => {
   const contacts = useSelector(selectContacts);
 
   const handleInputChange = (evt) => {
-
     if (evt.target.name === 'name') {
       setName(evt.target.value);
     } else if (evt.target.name === 'number') {
@@ -30,30 +30,33 @@ const ContactForm = () => {
       name,
       number,
     }
-    
+
     const addedContacts = contacts.find(contact => contact.name === contactData.name);
     if (addedContacts) {
       return alert(`${contactData.name} is already in contacts!`);
     }
 
-    dispatch(addContact (contactData));
+    dispatch(addContact(contactData));
 
     setName('');
     setNumber('');
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Field>
-        <Label htmlFor='user-name'> Name </Label>
-        <Input onChange={handleInputChange} value={name} id='user-name' type="text" name="name" required />
-      </Field>
-      <Field>
-        <Label htmlFor='user-phone'> Phone number </Label>
-        <Input onChange={handleInputChange} value={number} id='user-phone' type="tel" name="number" required />
-      </Field>
-      <Button type='submit'>Add contact</Button>
-    </Form>
+    <Wrapper>
+      <H2>Create new contact</H2>
+      <Form onSubmit={handleSubmit}>
+        <Field>
+          <Label htmlFor='user-name'> Name </Label>
+          <Input onChange={handleInputChange} value={name} id='user-name' type="text" name="name" placeholder='Name Lastname' required />
+        </Field>
+        <Field>
+          <Label htmlFor='user-phone'> Phone number </Label>
+          <Input onChange={handleInputChange} value={number} id='user-phone' type="tel" name="number" placeholder='xxx-xx-xx' required />
+        </Field>
+        <Button type='submit'>Add contact</Button>
+      </Form>
+    </Wrapper>
   )
 }
 

@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    width: 450px;
-    margin: 0 auto;
+    width: 650px;
 `
 export const Field = styled.div`
     display: flex;

@@ -3,7 +3,7 @@ import { Wrapper, Field, Input, } from "./Filter.styled";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { setFilter } from '../../redux/filterSlice';
+import { setFilter } from '../../redux/filter/filterSlice';
 
 const Filter = () => {
     const dispatch = useDispatch();
@@ -17,8 +17,8 @@ const Filter = () => {
     return (
         <Wrapper>
             <Field>
-                <Label htmlFor='filter'> Find contacts by name </Label>
-                <Input onChange={handleFilter} value={filter} id='filter' type="text" name="filter" required />
+                <Label htmlFor='filter'>  </Label>
+                <Input onChange={handleFilter} value={filter} id='filter' type="text" name="filter" placeholder="Find contacts by name" required />
             </Field>
         </Wrapper>
     )

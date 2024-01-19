@@ -1,26 +1,33 @@
 import styled from "styled-components";
 
-export const Form = styled.form`
-    width: 450px;
-    border-top-right-radius: 12px;
-    border-top-left-radius: 12px;
+export const Wrapper = styled.div`
+   width: 300px;
+    border-radius: 8px;
     background-color: #2c3d50;
     border: 1px solid #2c3d50;
-    margin: 0 auto;
-    padding: 40px 25px;
+    padding: 30px 25px;
+    height: 100%;
+`
+export const H2 = styled.h2`
+      text-align: center;
+    color: #1abc9c;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom:  20px;
+`
+export const Form = styled.form`
     display: flex;
     flex-direction: column;
-
-    
 `
 export const Field = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;  
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 `
 export const Label = styled.label`
     font-family: sans-serif;
+    font-size: 14px;
     font-weight: 700;
     color: #1abc9c;
     padding-left: 18px;
@@ -28,14 +35,18 @@ export const Label = styled.label`
 export const Input = styled.input`
     border-radius: 35px;
     border: none;
-    height: 35px;
+    height: 25px;
     padding-left: 18px;
     outline: transparent;
     font-family: sans-serif;
-    font-size: 16px;
+    font-size: 14px;
+
+    &::placeholder{
+        font-size: 12px;
+    }
 `
 export const Button = styled.button`
-    padding: 12px 16px;
+    padding: 8px 12px;
     background-color: #1abc9c;
     color: #fff;
     border: none;
