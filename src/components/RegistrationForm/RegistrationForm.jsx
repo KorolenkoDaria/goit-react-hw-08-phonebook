@@ -1,10 +1,21 @@
+import {
+    Wrapper,
+    Title,
+    FormElement,
+    Field,
+    LabelElement,
+    InputElement,
+    ButtonElement,
+    DivElement,
+    PElement,
+    StyledNavLink
+} from "./RegistrationForm.styled";
+
 import { useDispatch } from 'react-redux';
 
 import Container from "components/Container/Container";
 
 import { registerUser } from "../../redux/auth/authOperations";
-
-import { Wrapper, Title, FormElement, Field, LabelElement, InputElement, ButtonElement, DivElement, PElement, StyledNavLink } from "./RegistrationForm.styled"
 
 const RegistrationForm = () => {
     const dispatch = useDispatch();

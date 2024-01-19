@@ -1,4 +1,11 @@
-import { StyledNav, StyledUl, StyledLi, StyledNavLink, StyledNavLinkLogo, Logo } from "./Navigation.styled";
+import {
+    StyledNav,
+    StyledUl,
+    StyledLi,
+    StyledNavLink,
+    StyledNavLinkLogo,
+    Logo
+} from "./Navigation.styled";
 
 import { useSelector } from "react-redux";
 
