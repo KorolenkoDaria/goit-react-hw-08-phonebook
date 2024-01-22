@@ -8,8 +8,3 @@ export const handlePending = state => {
     state.error = payload;
 };
 
-export const handleFulfilled = (state) => {
-    state.isLoading = false;
-    state.isLoggedIn = true;
-    state.error = null;
-};

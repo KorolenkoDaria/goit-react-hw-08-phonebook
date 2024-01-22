@@ -26,7 +26,6 @@ const RegisterPage = lazy(() => import('../../pages/Registration/Register'));
 const ContactsPage = lazy(() => import('../../pages/Contacts/Contacts'));
 
 const App = () => {
-
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
 
@@ -34,7 +33,7 @@ const App = () => {
     if (token) {
       dispatch(refreshUser())
     }
-  }, [dispatch])
+  }, [dispatch, token])
 
   return (
 
