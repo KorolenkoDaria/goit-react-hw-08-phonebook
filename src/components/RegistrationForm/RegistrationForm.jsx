@@ -11,27 +11,58 @@ import {
     StyledNavLink
 } from "./RegistrationForm.styled";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { toast } from 'react-toastify';
 
 import Container from "components/Container/Container";
 
 import { registerUser } from "../../redux/auth/authOperations";
+import { selectError } from "../../redux/auth/authSelecotrs";
+
+import { clearError } from "../../redux/auth/authSlice";
+
+import { useEffect } from "react";
 
 const RegistrationForm = () => {
     const dispatch = useDispatch();
+    const getError = useSelector(selectError);
 
-    const handleSubmit = evt => {
+
+    const handleSubmit = async evt => {
         evt.preventDefault();
+
         const form = evt.currentTarget;
-        dispatch(
-            registerUser({
-                name: form.elements.name.value.trim(),
-                email: form.elements.email.value.trim(),
-                password: form.elements.password.value.trim(),
-            })
-        );
-        form.reset();
+        try {
+            dispatch(
+                registerUser({
+                    name: form.elements.name.value.trim(),
+                    email: form.elements.email.value.trim(),
+                    password: form.elements.password.value.trim(),
+                })
+            );
+            form.reset();
+        } catch (error) {
+            console.log(error.message);
+        }
     };
+
+    useEffect(() => {
+        if (getError) {
+            toast.error(`${getError}`, {
+                position: 'top-center',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+
+        dispatch(clearError());
+    }, [getError, dispatch]);
 
     return (
         <Container>

@@ -5,7 +5,6 @@ const BASE_URL = "https://connections-api.herokuapp.com";
 export const addContact  = createAsyncThunk(
     "contacts/addContact",
     async (contactData, thunkAPI) => {
-        console.log(contactData);
         try {
             const { data } = await axios.post(BASE_URL + "/contacts", contactData);
             return data;

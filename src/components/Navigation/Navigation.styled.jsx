@@ -21,7 +21,6 @@ export const StyledLi = styled.li`
 `
 export const StyledNavLink = styled(NavLink)`
     color:#fff;
-    font-weight: 600;
     padding: 8px 12px;
     border-radius: 4px;
     transition: background-color 0.3s ease;

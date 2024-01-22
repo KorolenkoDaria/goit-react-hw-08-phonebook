@@ -35,7 +35,7 @@ export const StyledNavLink = styled(NavLink)`
     border-radius: 4px;
     border:none;
     font-weight: 600;
-    color: #2c3d50;
+    color: #2c3d50c7;
     transition: all 0.3s ease;
     &:hover{    
         color:#fff;

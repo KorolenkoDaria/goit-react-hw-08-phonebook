@@ -10,5 +10,6 @@ export const handlePending = state => {
 
 export const handleFulfilled = (state) => {
     state.isLoading = false;
+    state.isLoggedIn = true;
     state.error = null;
 };
